@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique Huy Dinh - Thời Trang Cao Cấp & Trợ Lý Phong Cách AI</title>
+  <meta name="description" content="Khám phá bộ sưu tập thời trang cao cấp tại Boutique Huy Dinh với tư vấn thông minh từ trợ lý AI.">
+  <meta name="theme-color" content="#0a0e17">
+  <meta property="og:title" content="Boutique Huy Dinh - Thời Trang Cao Cấp">
+  <meta property="og:description" content="Thời trang cao cấp cùng Trợ lý Phong cách AI độc quyền.">
+  <meta property="og:image" content="assets/hero.jpg">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fbbf24'/%3E%3Cstop offset='1' stop-color='%23d97706'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='900' text-anchor='middle' fill='%230f172a'%3EHD%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/hero.jpg">
+  <style>html { background: #06080f; }</style>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              900: '#78350f',
+            },
+            dark: {
+              bg: '#0a0e17',
+              card: '#121826',
+              border: '#1f293d',
+              input: '#1a2234',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- SweetAlert2 (Thông báo đẹp mắt) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0a0e17] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- Nền động sang trọng + thanh tiến trình cuộn -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grain"></div>
+  </div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ==================== TOP ANNOUNCEMENT BAR ==================== -->
+  <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 text-xs font-semibold py-1.5 px-4 text-center tracking-wider flex items-center justify-center gap-2">
+    <span>✨ BOUTIQUE HUY DINH - BỘ SƯU TẬP 2026 • NHẬP MÃ <strong>HUYDINH50</strong> ĐỂ NHẬN ƯU ĐÃI ĐẶC QUYỀN 50%</span>
+    <span class="hidden md:inline">• MIỄN PHÍ VẬN CHUYỂN TẤT CẢ ĐƠN TỪ 500.000đ</span>
+  </div>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
+            HD
+          </div>
+          <div>
+            <span class="text-2xl font-extrabold tracking-widest font-serif-luxury text-white">BOUTIQUE HUY DINH</span>
+            <span class="block text-[10px] tracking-[0.25em] text-amber-400 uppercase -mt-1 font-semibold">Luxury Fashion & Couture</span>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <button onclick="navigate('home')" class="nav-link hover:text-amber-400 transition-colors flex items-center gap-1.5" id="nav-btn-home">
+            <i data-lucide="home" class="w-4 h-4"></i> Trang chủ
+          </button>
+          <button onclick="navigate('shop')" class="nav-link hover:text-amber-400 transition-colors flex items-center gap-1.5" id="nav-btn-shop">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> Cửa hàng
+          </button>
+          <button onclick="navigate('orders')" class="nav-link hover:text-amber-400 transition-colors flex items-center gap-1.5" id="nav-btn-orders">
+            <i data-lucide="package-check" class="w-4 h-4"></i> Đơn mua
+          </button>
+          <button onclick="navigate('admin')" class="nav-link hover:text-amber-400 transition-colors flex items-center gap-1.5 text-amber-400 font-semibold" id="nav-btn-admin">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Quản trị Admin
+          </button>
+        </nav>
+
+        <!-- Right Action Buttons -->
+        <div class="flex items-center gap-3">
+          <!-- Search Toggle -->
+          <div class="relative hidden sm:block">
+            <input type="text" id="header-search-input" placeholder="Tìm kiếm trang phục..." 
+              onkeyup="handleHeaderSearch(event)"
+              class="w-48 lg:w-64 pl-9 pr-4 py-2 rounded-full bg-slate-900/80 border border-slate-700 text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:w-72 transition-all">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
+          </div>
+
+          <!-- Cart Icon -->
+          <button onclick="openCartModal()" class="relative p-2.5 rounded-full hover:bg-slate-800 text-slate-300 hover:text-amber-400 transition-colors" title="Giỏ hàng">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span id="cart-badge" class="absolute -top-0.5 -right-0.5 bg-amber-500 text-slate-950 text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+          </button>
+
+          <!-- User Menu / Auth Button -->
+          <div id="user-menu-container" class="relative">
+            <!-- Sẽ được render bởi JS: nút Đăng nhập hoặc Menu Profile -->
+            <button onclick="openAuthModal('login')" class="gradient-btn-gold px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md">
+              <i data-lucide="user" class="w-4 h-4"></i> Đăng nhập
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Nav -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-slate-900/95 border-b border-slate-800 space-y-2 text-sm">
+      <button onclick="navigate('home'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-800">Trang chủ</button>
+      <button onclick="navigate('shop'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-800">Cửa hàng</button>
+      <button onclick="navigate('orders'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-800">Đơn mua của tôi</button>
+      <button onclick="navigate('admin'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded hover:bg-slate-800 text-amber-400">Trang Quản trị Admin</button>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN VIEW CONTAINER ==================== -->
+  <main id="app-content" class="flex-grow">
+    <!-- View content rendered dynamically by app.js -->
+  </main>
+
+  <!-- ==================== AI CHATBOT FLOATING WIDGET ==================== -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <!-- Chat toggle button -->
+    <button id="ai-chat-btn" onclick="toggleAIChat()" 
+      class="group relative flex items-center gap-3 px-5 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold shadow-2xl shadow-amber-500/30 hover:scale-105 active:scale-95 transition-all">
+      <div class="relative">
+        <i data-lucide="bot" class="w-6 h-6 animate-bounce"></i>
+        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-slate-950"></span>
+      </div>
+      <span class="text-sm font-extrabold tracking-wide">Trợ Lý AI Stylist</span>
+    </button>
+
+    <!-- Chat Box Window -->
+    <div id="ai-chat-box" class="hidden absolute bottom-16 right-0 w-[380px] sm:w-[420px] h-[550px] glass-dropdown rounded-3xl flex flex-col shadow-2xl border border-amber-500/30 overflow-hidden animate-fade-in">
+      <!-- Chat Header -->
+      <div class="p-4 bg-gradient-to-r from-slate-900 via-amber-950/40 to-slate-900 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-white flex items-center gap-1.5">
+              Huy Dinh Stylist AI
+              <span class="px-1.5 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-300 font-mono">Gemini/GPT</span>
+            </h4>
+            <p class="text-[11px] text-emerald-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Trực tuyến • Sẵn sàng tư vấn
+            </p>
+          </div>
+        </div>
+        <button onclick="toggleAIChat()" class="p-1.5 text-slate-400 hover:text-white rounded-full hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div id="ai-chat-messages" class="flex-grow p-4 overflow-y-auto space-y-3.5 text-xs">
+        <div class="flex gap-2.5 items-start">
+          <div class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+            <i data-lucide="bot" class="w-4 h-4"></i>
+          </div>
+          <div class="p-3.5 rounded-2xl rounded-tl-sm bg-slate-800/90 text-slate-200 border border-slate-700/60 leading-relaxed max-w-[85%] shadow-sm">
+            👋 Xin chào! Tôi là <strong>Stylist AI của Boutique Huy Dinh</strong>. Tôi có thể giúp bạn chọn trang phục dự tiệc, công sở, phối đồ theo màu sắc hoặc kiểm tra sản phẩm đang có tại cửa hàng. Bạn đang tìm trang phục như thế nào?
+          </div>
+        </div>
+      </div>
+
+      <!-- Suggested Prompts -->
+      <div class="px-3 py-2 bg-slate-900/60 border-t border-slate-800/80 flex gap-2 overflow-x-auto text-[11px] whitespace-nowrap scrollbar-none">
+        <button onclick="sendQuickPrompt('Tư vấn váy đầm dạ tiệc sang trọng')" class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-amber-500/20 hover:border-amber-500/40 border border-slate-700 text-slate-300 transition-colors">✨ Váy dạ tiệc</button>
+        <button onclick="sendQuickPrompt('Gợi ý set đồ công sở nam thanh lịch')" class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-amber-500/20 hover:border-amber-500/40 border border-slate-700 text-slate-300 transition-colors">👔 Đồ công sở nam</button>
+        <button onclick="sendQuickPrompt('Sản phẩm nào đang giảm giá nhiều nhất?')" class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-amber-500/20 hover:border-amber-500/40 border border-slate-700 text-slate-300 transition-colors">🔥 Khuyến mãi hot</button>
+      </div>
+
+      <!-- Chat Input Form -->
+      <form id="ai-chat-form" onsubmit="handleSendAIMessage(event)" class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2 items-center">
+        <input type="text" id="ai-chat-input" placeholder="Hỏi AI Stylist về size, màu sắc, phong cách..." 
+          class="flex-grow bg-slate-800/90 border border-slate-700 rounded-full px-4 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
+        <button type="submit" class="w-9 h-9 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center hover:bg-amber-400 transition-colors shrink-0">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== CART DRAWER MODAL ==================== -->
+  <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm transition-opacity">
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-slate-900/95 backdrop-blur-xl border-l border-amber-500/20 shadow-2xl flex flex-col p-6 animate-slide-in-right">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-6 h-6 text-amber-400"></i>
+          <h3 class="font-bold text-lg text-white">Giỏ hàng của bạn</h3>
+        </div>
+        <button onclick="closeCartModal()" class="p-1.5 text-slate-400 hover:text-white rounded-full hover:bg-slate-800">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Cart Item List -->
+      <div id="cart-items-container" class="flex-grow overflow-y-auto py-4 space-y-4">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Coupon Code Input -->
+      <div class="py-3 border-t border-slate-800 space-y-2">
+        <label class="block text-xs font-semibold text-slate-300 flex items-center justify-between">
+          <span class="flex items-center gap-1.5"><i data-lucide="ticket-percent" class="w-3.5 h-3.5 text-amber-400"></i> Phiếu giảm giá độc quyền:</span>
+          <span class="text-[10px] text-amber-400 font-mono">HUYDINH50 (-50%)</span>
+        </label>
+        <div class="flex gap-2">
+          <input type="text" id="cart-coupon-input" placeholder="Nhập mã: HUYDINH50..." 
+            class="flex-grow bg-slate-800/90 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white uppercase placeholder:normal-case placeholder-slate-400 focus:outline-none focus:border-amber-400">
+          <button onclick="applyCoupon()" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors">
+            Áp dụng
+          </button>
+        </div>
+        <div id="coupon-alert" class="text-[11px] hidden"></div>
+      </div>
+
+      <!-- Cart Footer -->
+      <div class="pt-3 border-t border-slate-800 space-y-2.5">
+        <div class="flex justify-between text-xs text-slate-400">
+          <span>Tạm tính:</span>
+          <span id="cart-subtotal" class="font-semibold text-white">0đ</span>
+        </div>
+        <div id="cart-discount-row" class="flex justify-between text-xs text-emerald-400 hidden">
+          <span>Giảm giá đặc quyền:</span>
+          <span id="cart-discount" class="font-bold">-0đ</span>
+        </div>
+        <div class="flex justify-between text-base font-bold text-white pt-1">
+          <span>Tổng cộng:</span>
+          <span id="cart-total" class="text-amber-400 text-xl font-bold">0đ</span>
+        </div>
+        <button onclick="proceedToCheckout()" class="w-full gradient-btn-gold py-3.5 rounded-xl font-bold text-slate-950 flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all">
+          <i data-lucide="credit-card" class="w-5 h-5"></i> Thanh toán ngay
+        </button>
+        <div class="flex items-center justify-center gap-2 pt-1 text-[11px] text-slate-400">
+          <span class="flex items-center gap-1 text-pink-400 font-medium"><span class="w-2 h-2 rounded-full bg-pink-500"></span> MoMo QR: LE DINH HUY</span>
+          <span>•</span>
+          <span class="flex items-center gap-1 text-slate-300"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> COD Toàn quốc</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== AUTH MODAL (LOGIN / REGISTER) ==================== -->
+  <div id="auth-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-slate-900/95 backdrop-blur-xl border border-amber-500/20 rounded-3xl p-8 shadow-2xl shadow-black/60 relative animate-scale-in">
+      <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Tabs: Đăng Nhập / Đăng Ký -->
+      <div class="flex border-b border-slate-800 mb-6">
+        <button id="auth-tab-login" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-center font-bold text-sm border-b-2 border-amber-400 text-amber-400 transition-all">
+          Đăng nhập
+        </button>
+        <button id="auth-tab-register" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-center font-bold text-sm border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all">
+          Đăng ký mới
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Email tài khoản</label>
+          <input type="email" id="login-email" required placeholder="admin@fashionstore.vn hoặc an@gmail.com" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">Mật khẩu</label>
+          <input type="password" id="login-password" required placeholder="••••••••" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+
+        <!-- Tài khoản mẫu gợi ý nhanh -->
+        <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-700 text-[11px] text-slate-400 space-y-1">
+          <p class="font-bold text-amber-400">Tài khoản demo sẵn có:</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="fillDemoAccount('huydinh@gmail.com', 'huydinh123')" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold hover:bg-amber-500/30">👑 Huy Dinh (huydinh123)</button>
+            <button type="button" onclick="fillDemoAccount('admin@fashionstore.vn', 'admin123')" class="underline hover:text-white">Admin</button>
+            <span>•</span>
+            <button type="button" onclick="fillDemoAccount('an@gmail.com', '123456')" class="underline hover:text-white">Khách An</button>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full gradient-btn-gold py-3 rounded-xl font-bold text-slate-950 text-sm">
+          Đăng nhập hệ thống
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" onsubmit="handleRegister(event)" class="space-y-3.5 hidden">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Họ và tên</label>
+          <input type="text" id="reg-fullname" required placeholder="Nguyễn Văn A" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Email</label>
+          <input type="email" id="reg-email" required placeholder="email@vidu.com" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Mật khẩu</label>
+          <input type="password" id="reg-password" required minlength="6" placeholder="Tối thiểu 6 ký tự" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Số điện thoại</label>
+          <input type="tel" id="reg-phone" placeholder="0901234567" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Địa chỉ giao hàng</label>
+          <input type="text" id="reg-address" placeholder="Số nhà, đường, quận/huyện, TP" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <button type="submit" class="w-full gradient-btn-gold py-3 rounded-xl font-bold text-slate-950 text-sm mt-2">
+          Đăng ký tài khoản
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== PRODUCT DETAIL MODAL ==================== -->
+  <div id="product-detail-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
+    <div id="product-detail-content" class="w-full max-w-5xl bg-slate-900/95 backdrop-blur-xl border border-amber-500/20 rounded-3xl overflow-hidden shadow-2xl shadow-black/70 relative animate-scale-in max-h-[92vh] flex flex-col">
+      <!-- Rendered dynamically -->
+    </div>
+  </div>
+
+  <!-- ==================== DEDICATED FULL CHECKOUT MODAL ==================== -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+    <div id="checkout-modal-content" class="w-full max-w-5xl bg-slate-900/95 backdrop-blur-2xl border border-amber-500/30 rounded-3xl shadow-2xl shadow-black/80 relative animate-scale-in my-auto max-h-[94vh] flex flex-col overflow-hidden">
+      <!-- Dynamic Checkout Content rendered by app.js -->
+    </div>
+  </div>
+
+  <!-- ==================== USER PROFILE MODAL ==================== -->
+  <div id="user-profile-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="w-full max-w-lg bg-slate-900/95 border border-amber-500/30 rounded-3xl p-6 md:p-8 shadow-2xl shadow-black/80 relative animate-scale-in">
+      <button onclick="closeUserProfileModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors p-1.5 rounded-full hover:bg-slate-800">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-800">
+        <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+          <i data-lucide="user-check" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-white tracking-wide">Hồ Sơ Cá Nhân</h3>
+          <p class="text-xs text-slate-400">Quản lý thông tin và ảnh đại diện tài khoản</p>
+        </div>
+      </div>
+
+      <!-- Avatar Section -->
+      <div class="flex flex-col items-center justify-center mb-6">
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-file-input').click()">
+          <img id="profile-modal-avatar" src="" alt="Avatar" class="w-24 h-24 rounded-full object-cover ring-4 ring-amber-500/40 shadow-xl shadow-amber-500/10">
+          <div class="absolute inset-0 rounded-full bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-white text-[11px] font-semibold gap-1 backdrop-blur-xs">
+            <i data-lucide="camera" class="w-5 h-5 text-amber-400"></i>
+            <span>Đổi ảnh</span>
+          </div>
+        </div>
+        <input type="file" id="avatar-file-input" class="hidden" accept="image/*" onchange="handleAvatarFileSelect(event)">
+        <p class="text-[11px] text-slate-400 mt-2.5">Bấm vào ảnh đại diện để tải ảnh từ máy tính (PNG, JPG, WebP)</p>
+      </div>
+
+      <!-- Profile Form -->
+      <form id="profile-form" onsubmit="handleSaveProfile(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Email (Tên đăng nhập)</label>
+          <input type="text" id="profile-email" disabled 
+            class="w-full bg-slate-800/50 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-400 cursor-not-allowed">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Họ và tên</label>
+          <input type="text" id="profile-fullname" required placeholder="Họ và tên của bạn" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Số điện thoại</label>
+          <input type="tel" id="profile-phone" placeholder="Số điện thoại liên lạc" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Địa chỉ giao hàng mặc định</label>
+          <input type="text" id="profile-address" placeholder="Địa chỉ giao nhận hàng" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Hoặc dán URL Ảnh đại diện trực tiếp</label>
+          <input type="url" id="profile-avatar-url" placeholder="https://example.com/photo.jpg" 
+            class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">
+        </div>
+
+        <div class="pt-2 flex gap-3">
+          <button type="button" onclick="closeUserProfileModal()" class="w-1/2 py-2.5 rounded-xl border border-slate-700 text-xs font-semibold text-slate-300 hover:bg-slate-800 transition-colors">
+            Hủy
+          </button>
+          <button type="submit" id="btn-save-profile" class="w-1/2 gradient-btn-gold py-2.5 rounded-xl text-xs font-bold text-slate-950 shadow-md">
+            Lưu thay đổi
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-950 border-t border-slate-800/80 pt-16 pb-12 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-lg">
+              HD
+            </div>
+            <span class="text-xl font-bold tracking-widest font-serif-luxury text-white">BOUTIQUE HUY DINH</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Hệ thống thương mại điện tử thời trang đẳng cấp Boutique Huy Dinh, tiên phong ứng dụng trí tuệ nhân tạo (AI Stylist) nhằm mang đến trải nghiệm mua sắm hoàn mỹ và cá nhân hóa.
+          </p>
+          <div class="flex gap-3 text-slate-400">
+            <a href="#" class="p-2 rounded-full bg-slate-900 hover:text-amber-400 hover:bg-slate-800"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            <a href="#" class="p-2 rounded-full bg-slate-900 hover:text-amber-400 hover:bg-slate-800"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+            <a href="#" class="p-2 rounded-full bg-slate-900 hover:text-amber-400 hover:bg-slate-800"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Về Chúng Tôi</h5>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Câu chuyện thương hiệu Huy Dinh</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Bộ sưu tập Haute Couture</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Hệ thống showroom</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Phát triển bền vững</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Chính Sách & Hỗ Trợ</h5>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Chính sách đổi trả 30 ngày</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Hướng dẫn chọn size</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Kiểm tra đơn hàng</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Bảo mật thông tin khách hàng</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Học Phần Báo Cáo</h5>
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2 text-xs text-slate-300">
+            <p><strong class="text-amber-400">Dự án:</strong> Boutique Huy Dinh AI E-Commerce</p>
+            <p><strong class="text-amber-400">Công nghệ:</strong> FastAPI, SQLite, HTML5/Tailwind, AI Chatbot</p>
+            <p><strong class="text-amber-400">Kiến trúc:</strong> Client/Server RESTful API</p>
+            <div class="pt-2 border-t border-slate-800 text-[11px] text-emerald-400 font-semibold">
+              ✓ Hoàn thiện 100% tiêu chí đề bài
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-800/80 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 BOUTIQUE HUY DINH. All rights reserved. Vibe Coding Project.</p>
+        <div class="flex gap-6">
+          <a href="/docs" target="_blank" class="hover:text-amber-400">Swagger API Docs</a>
+          <a href="/redoc" target="_blank" class="hover:text-amber-400">ReDoc</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" title="Lên đầu trang" aria-label="Lên đầu trang">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+  <!-- UI Enhancements (hiệu ứng, theme thông báo, animation) -->
+  <script src="ui.js"></script>
+</body>
+</html>

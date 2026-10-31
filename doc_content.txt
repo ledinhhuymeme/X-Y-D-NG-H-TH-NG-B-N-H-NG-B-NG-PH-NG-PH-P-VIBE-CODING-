@@ -1,0 +1,37 @@
+﻿0: Äá»€ BĂ€I THá»°C HĂ€NH: XĂ‚Y Dá»°NG Há»† THá»NG BĂN HĂ€NG Báº°NG PHÆ¯Æ NG PHĂP "VIBE CODING"
+1: 1. Má»¥c tiĂªu mĂ´n há»c bĂ i lab cuá»‘i khĂ³a há»c
+2: á»¨ng dá»¥ng AI trong phĂ¡t triá»ƒn pháº§n má»m: LĂ m chá»§ ká»¹ nÄƒng "Vibe Coding" Ä‘Ă³ng vai trĂ² lĂ  Product Manager, ra lá»‡nh, kiá»ƒm duyá»‡t vĂ  tinh chá»‰nh mĂ£ nguá»“n do AI Agent sinh ra thay vĂ¬ viáº¿t tá»«ng dĂ²ng code thá»§ cĂ´ng.
+3: LĂ m chá»§ cĂ´ng nghá»‡ Full-stack: XĂ¢y dá»±ng má»™t á»©ng dá»¥ng web thÆ°Æ¡ng máº¡i Ä‘iá»‡n tá»­ hoĂ n chá»‰nh tá»« cÆ¡ sá»Ÿ dá»¯ liá»‡u, backend API Ä‘áº¿n giao diá»‡n ngÆ°á»i dĂ¹ng (Frontend).
+4: NĂ¢ng cao tÆ° duy thiáº¿t káº¿ há»‡ thá»‘ng: RĂ¨n luyá»‡n kháº£ nÄƒng quáº£n lĂ½ context, viáº¿t Prompt hiá»‡u quáº£, xá»­ lĂ½ lá»—i vĂ  kiá»ƒm thá»­ mĂ£ nguá»“n Ä‘Æ°á»£c táº¡o bá»Ÿi AI.
+5: 2. MĂ´ táº£ bĂ i toĂ¡n: XĂ¢y dá»±ng Website BĂ¡n HĂ ng (E-Commerce Platform)
+6: Sinh viĂªn cáº§n phĂ¡t triá»ƒn má»™t há»‡ thá»‘ng bĂ¡n hĂ ng trá»±c tuyáº¿n táº­p trung vĂ o má»™t lÄ©nh vá»±c cá»¥ thá»ƒ (vĂ­ dá»¥: Thá»i trang, sĂ¡ch, mĂ¡y tĂ­nh, cĂ  phĂª,â€¦). Há»‡ thá»‘ng bao gá»“m 2 phĂ¢n há»‡ chĂ­nh:
+7: PhĂ¢n há»‡ KhĂ¡ch hĂ ng (User): Xem danh má»¥c sáº£n pháº©m, tĂ¬m kiáº¿m, lá»c, quáº£n lĂ½ giá» hĂ ng, Ä‘áº·t hĂ ng vĂ  thanh toĂ¡n giáº£ láº­p.
+8: PhĂ¢n há»‡ Quáº£n trá»‹ (Admin Dashboard): Quáº£n lĂ½ sáº£n pháº©m, danh má»¥c, theo dĂµi Ä‘Æ¡n hĂ ng vĂ  thá»‘ng kĂª doanh thu cÆ¡ báº£n.
+9: 3. YĂªu cáº§u chi tiáº¿t vá» CĂ´ng nghá»‡ 
+10: Sinh viĂªn cĂ³ thá»ƒ lá»±a chá»n stack cĂ´ng nghá»‡ thĂ´ng qua viá»‡c cáº¥u hĂ¬nh cho AI Agent, khuyáº¿n khĂ­ch sá»­ dá»¥ng:
+11: Frontend: Vue 3 / React (TypeScript, Tailwind CSS, Vite).
+12: Backend: FastAPI (Python) hoáº·c .NET 8 Web API / Node.js (Express/NestJS).
+13: Database: MySQL hoáº·c SQLite (cho mĂ´i trÆ°á»ng phĂ¡t triá»ƒn nhanh).
+14: Kiáº¿n trĂºc: Sá»­ dá»¥ng mĂ´ hĂ¬nh MVC hoáº·c tĂ¡ch biá»‡t Client/Server Ä‘á»u Ä‘Æ°á»£c.
+15: 4. CĂ¡c chá»©c nÄƒng chĂ­nh
+16:  PhĂ­a KhĂ¡ch hĂ ng 
+17: XĂ¡c thá»±c ngÆ°á»i dĂ¹ng: ÄÄƒng kĂ½, Ä‘Äƒng nháº­p (JWT cÆ¡ báº£n).
+18: KhĂ¡m phĂ¡ sáº£n pháº©m: Trang chá»§ hiá»ƒn thá»‹ sáº£n pháº©m ná»•i báº­t, phĂ¢n trang, bá»™ lá»c theo danh má»¥c, khoáº£ng giĂ¡ vĂ  tĂ­nh nÄƒng tĂ¬m kiáº¿m tá»« khĂ³a.
+19: Chi tiáº¿t sáº£n pháº©m: Xem thĂ´ng tin chi tiáº¿t, hĂ¬nh áº£nh, mĂ´ táº£ vĂ  Ä‘Ă¡nh giĂ¡ sáº£n pháº©m.
+20: Giá» hĂ ng & Thanh toĂ¡n: ThĂªm/sá»­a/xĂ³a sáº£n pháº©m khá»i giá» hĂ ng, tĂ­nh tá»•ng tiá»n tá»± Ä‘á»™ng, táº¡o Ä‘Æ¡n hĂ ng má»›i.
+21: Quáº£n lĂ½ Ä‘Æ¡n hĂ ng cĂ¡ nhĂ¢n: Xem lá»‹ch sá»­ cĂ¡c Ä‘Æ¡n hĂ ng Ä‘Ă£ Ä‘áº·t vĂ  tráº¡ng thĂ¡i Ä‘Æ¡n hĂ ng (Äang xá»­ lĂ½, Äang giao, ÄĂ£ hoĂ n thĂ nh).
+22: PhĂ­a Quáº£n trá»‹ viĂªn (Admin Dashboard)
+23: Quáº£n lĂ½ sáº£n pháº©m (CRUD): ThĂªm má»›i, sá»­a thĂ´ng tin, cáº­p nháº­t tráº¡ng thĂ¡i cĂ²n/háº¿t hĂ ng vĂ  xĂ³a sáº£n pháº©m.
+24: Quáº£n lĂ½ Ä‘Æ¡n hĂ ng: Xem danh sĂ¡ch toĂ n bá»™ Ä‘Æ¡n hĂ ng cá»§a há»‡ thá»‘ng, cáº­p nháº­t tráº¡ng thĂ¡i Ä‘Æ¡n hĂ ng.
+25: Thá»‘ng kĂª tá»•ng quan: Biá»ƒu Ä‘á»“ hoáº·c sá»‘ liá»‡u thá»‘ng kĂª tá»•ng doanh thu, tá»•ng sá»‘ Ä‘Æ¡n hĂ ng vĂ  tá»•ng sá»‘ khĂ¡ch hĂ ng.
+26: Pháº§n nĂ¢ng cao: TĂ­ch há»£p AI Chatbot tÆ° váº¥n bĂ¡n hĂ ng
+27: Táº¡o má»™t API Endpoint má»›i trĂªn Backend: POST /api/chat.
+28: Sá»­ dá»¥ng API Key cá»§a OpenAI (ChatGPT) hoáº·c Google Gemini: Thiáº¿t láº­p Context ngá»¯ cáº£nh cho AI biáº¿t nĂ³ lĂ  nhĂ¢n viĂªn tÆ° váº¥n bĂ¡n hĂ ng vĂ  cung cáº¥p dá»¯ liá»‡u sáº£n pháº©m hiá»‡n cĂ³ Ä‘á»ƒ AI tráº£ lá»i khĂ¡ch
+29: 5. TiĂªu chĂ­ Ä‘Ă¡nh giĂ¡ & Nghiá»‡m thu
+30: 
+---TABLES---
+Table 0:
+  Row 0: ['TiĂªu chĂ­', 'Trá»ng sá»‘', 'MĂ´ táº£ chi tiáº¿t']
+  Row 1: ['1.TĂ­nh hoĂ n thiá»‡n cá»§a sáº£n pháº©m', '40%', 'Há»‡ thá»‘ng cháº¡y á»•n Ä‘á»‹nh, cĂ¡c chá»©c nÄƒng cá»‘t lĂµi (KhĂ¡ch hĂ ng + Admin) hoáº¡t Ä‘á»™ng chĂ­nh xĂ¡c, khĂ´ng bá»‹ lá»—i']
+  Row 2: ['2. Giao diá»‡n & Tráº£i nghiá»‡m (UI/UX)', '30%', 'Giao diá»‡n hiá»‡n Ä‘áº¡i, trá»±c quan, thĂ¢n thiá»‡n, dá»… sá»­ dá»¥ng']
+  Row 3: ['3. Hiá»ƒu biáº¿t mĂ£ nguá»“n & Báº£o vá»‡', '30%', 'Sinh viĂªn pháº£i giáº£i thĂ­ch Ä‘Æ°á»£c kiáº¿n trĂºc há»‡ thá»‘ng, luá»“ng dá»¯ liá»‡u vĂ  cĂ¡ch cĂ¡c thĂ nh pháº§n káº¿t ná»‘i vá»›i nhau khi giáº£ng viĂªn Ä‘áº·t cĂ¢u há»i váº¥n Ä‘Ă¡p.']

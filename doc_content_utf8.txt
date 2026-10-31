@@ -1,0 +1,37 @@
+0: ĐỀ BÀI THỰC HÀNH: XÂY DỰNG HỆ THỐNG BÁN HÀNG BẰNG PHƯƠNG PHÁP "VIBE CODING"
+1: 1. Mục tiêu môn học bài lab cuối khóa học
+2: Ứng dụng AI trong phát triển phần mềm: Làm chủ kỹ năng "Vibe Coding" đóng vai trò là Product Manager, ra lệnh, kiểm duyệt và tinh chỉnh mã nguồn do AI Agent sinh ra thay vì viết từng dòng code thủ công.
+3: Làm chủ công nghệ Full-stack: Xây dựng một ứng dụng web thương mại điện tử hoàn chỉnh từ cơ sở dữ liệu, backend API đến giao diện người dùng (Frontend).
+4: Nâng cao tư duy thiết kế hệ thống: Rèn luyện khả năng quản lý context, viết Prompt hiệu quả, xử lý lỗi và kiểm thử mã nguồn được tạo bởi AI.
+5: 2. Mô tả bài toán: Xây dựng Website Bán Hàng (E-Commerce Platform)
+6: Sinh viên cần phát triển một hệ thống bán hàng trực tuyến tập trung vào một lĩnh vực cụ thể (ví dụ: Thời trang, sách, máy tính, cà phê,…). Hệ thống bao gồm 2 phân hệ chính:
+7: Phân hệ Khách hàng (User): Xem danh mục sản phẩm, tìm kiếm, lọc, quản lý giỏ hàng, đặt hàng và thanh toán giả lập.
+8: Phân hệ Quản trị (Admin Dashboard): Quản lý sản phẩm, danh mục, theo dõi đơn hàng và thống kê doanh thu cơ bản.
+9: 3. Yêu cầu chi tiết về Công nghệ 
+10: Sinh viên có thể lựa chọn stack công nghệ thông qua việc cấu hình cho AI Agent, khuyến khích sử dụng:
+11: Frontend: Vue 3 / React (TypeScript, Tailwind CSS, Vite).
+12: Backend: FastAPI (Python) hoặc .NET 8 Web API / Node.js (Express/NestJS).
+13: Database: MySQL hoặc SQLite (cho môi trường phát triển nhanh).
+14: Kiến trúc: Sử dụng mô hình MVC hoặc tách biệt Client/Server đều được.
+15: 4. Các chức năng chính
+16:  Phía Khách hàng 
+17: Xác thực người dùng: Đăng ký, đăng nhập (JWT cơ bản).
+18: Khám phá sản phẩm: Trang chủ hiển thị sản phẩm nổi bật, phân trang, bộ lọc theo danh mục, khoảng giá và tính năng tìm kiếm từ khóa.
+19: Chi tiết sản phẩm: Xem thông tin chi tiết, hình ảnh, mô tả và đánh giá sản phẩm.
+20: Giỏ hàng & Thanh toán: Thêm/sửa/xóa sản phẩm khỏi giỏ hàng, tính tổng tiền tự động, tạo đơn hàng mới.
+21: Quản lý đơn hàng cá nhân: Xem lịch sử các đơn hàng đã đặt và trạng thái đơn hàng (Đang xử lý, Đang giao, Đã hoàn thành).
+22: Phía Quản trị viên (Admin Dashboard)
+23: Quản lý sản phẩm (CRUD): Thêm mới, sửa thông tin, cập nhật trạng thái còn/hết hàng và xóa sản phẩm.
+24: Quản lý đơn hàng: Xem danh sách toàn bộ đơn hàng của hệ thống, cập nhật trạng thái đơn hàng.
+25: Thống kê tổng quan: Biểu đồ hoặc số liệu thống kê tổng doanh thu, tổng số đơn hàng và tổng số khách hàng.
+26: Phần nâng cao: Tích hợp AI Chatbot tư vấn bán hàng
+27: Tạo một API Endpoint mới trên Backend: POST /api/chat.
+28: Sử dụng API Key của OpenAI (ChatGPT) hoặc Google Gemini: Thiết lập Context ngữ cảnh cho AI biết nó là nhân viên tư vấn bán hàng và cung cấp dữ liệu sản phẩm hiện có để AI trả lời khách
+29: 5. Tiêu chí đánh giá & Nghiệm thu
+30: 
+---TABLES---
+Table 0:
+  Row 0: ['Tiêu chí', 'Trọng số', 'Mô tả chi tiết']
+  Row 1: ['1.Tính hoàn thiện của sản phẩm', '40%', 'Hệ thống chạy ổn định, các chức năng cốt lõi (Khách hàng + Admin) hoạt động chính xác, không bị lỗi']
+  Row 2: ['2. Giao diện & Trải nghiệm (UI/UX)', '30%', 'Giao diện hiện đại, trực quan, thân thiện, dễ sử dụng']
+  Row 3: ['3. Hiểu biết mã nguồn & Bảo vệ', '30%', 'Sinh viên phải giải thích được kiến trúc hệ thống, luồng dữ liệu và cách các thành phần kết nối với nhau khi giảng viên đặt câu hỏi vấn đáp.']
